@@ -1,0 +1,212 @@
+{
+  "common": {
+    "welcome": "Welcome",
+    "logout": "Logout",
+    "login": "Login",
+    "password": "Password",
+    "email": "Email",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "signUp": "Sign Up",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "back": "Back",
+    "errors": {
+      "networkError": "Network error. Please check your connection.",
+      "serverError": "Server error. Please try again later."
+    },
+    "logoutSuccess": "You have been logged out successfully.",
+    "logoutError": "An error occurred during logout. Please try again."
+  },
+  "auth": {
+    "messages": {
+      "fillAllFields": "Please fill in all required fields."
+    },
+    "title": "Login",
+    "signupTitle": "Create Account",
+    "invalidEmail": "Invalid email",
+    "passwordRequired": "Password is required",
+    "emailRequired": "Email is required",
+    "loginSuccess": "Login successful",
+    "loginError": "Login failed",
+    "signupError": "Sign up failed",
+    "signupSuccess": "Sign up successful",
+    "leftSide": {
+      "description": "Comprehensive tutoring class management system. Connect Teachers, Parents, and Students in a single platform.",
+      "trackProgress": "Track learning progress",
+      "onlineAttendance": "Online attendance",
+      "manageTuition": "Manage tuition fees"
+    },
+    "header": {
+      "loginWelcome": "Welcome back!",
+      "loginDescription": "Please log in to continue.",
+      "registerTitle": "Student Registration",
+      "registerDescription": "Join a class and track your learning progress."
+    },
+    "form": {
+      "fullName": "Full Name",
+      "namePlaceholder": "John Doe",
+      "email": "Email",
+      "emailPlaceholder": "{email}",
+      "password": "Password",
+      "passwordPlaceholder": "••••••••"
+    },
+    "buttons": {
+      "login": "Login",
+      "signup": "Create Account",
+      "confirm": "Confirm"
+    },
+    "toggle": {
+      "noAccount": "Don't have an account?",
+      "hasAccount": "Already have an account?",
+      "registerNow": "Sign up now",
+      "loginNow": "Login now"
+    },
+    "rememberMe": "Remember me",
+    "social": "Or continue with",
+    "otp": {
+      "title": "Verify Account",
+      "description": "We sent a 6-digit verification code to your email",
+      "error": "Verification code is incorrect. Please try again.",
+      "noCode": "Didn't receive the code?",
+      "resend": "Resend new code",
+      "resendTimer": "Resend in {timer}s",
+      "back": "Back to registration",
+      "verifying": "Verifying OTP...",
+      "resending": "Sending new code...",
+      "verifySuccess": "Verification successful! Your account has been activated.",
+      "invalidOtp": "OTP code is invalid. Please check and try again.",
+      "verifyError": "An error occurred while verifying OTP. Please try again.",
+      "invalidEmailOtp": "Email address is invalid.",
+      "resendSuccess": "New code has been sent to {email}",
+      "resendError": "An error occurred while resending the code. Please try again."
+    },
+    "login": {
+      "loggingIn": "Logging in...",
+      "loginSuccessMsg": "Login successful!",
+      "logoutSuccessMsg": "Logged out successfully!",
+      "errors": {
+        "VALIDATION_ERROR": "Invalid data. Please check your information.",
+        "UNAUTHORIZED": "Email or password is incorrect.",
+        "FORBIDDEN": "Your account has been locked. Please contact administrator.",
+        "NOT_FOUND": "Account does not exist.",
+        "BAD_REQUEST": "Invalid request. Please try again.",
+        "INTERNAL_ERROR": "Server error. Please try again later.",
+        "ERROR": "Login failed, please check your information."
+      },
+      "googleLoginFailedError": "Google login failed, please try again."
+    },
+    "register": {
+      "signingUp": "Creating account...",
+      "signupSuccessOtp": "Sign up successful! Please verify your OTP.",
+      "errors": {
+        "VALIDATION_ERROR": "Invalid data. Please check your email, password and name.",
+        "UNAUTHORIZED": "You do not have permission to perform this action.",
+        "FORBIDDEN": "Registration denied. Please contact administrator.",
+        "NOT_FOUND": "Resource not found.",
+        "BAD_REQUEST": "Email may already be registered. Please use a different email.",
+        "INTERNAL_ERROR": "Server error. Please try again later.",
+        "ERROR": "Sign up failed, please try again."
+      }
+    },
+    "forgotPassword": {
+      "emailRequired": "Please enter your email address.",
+      "invalidEmail": "Email address is invalid.",
+      "validationError": "Email address is invalid.",
+      "successMessage": "A new password has been sent to your email. Please check your inbox (and spam folder).",
+      "errorMessage": "An error occurred while sending the request. Please try again."
+    }
+  },
+  "navigation": {
+    "home": "Home",
+    "classes": "Classes",
+    "students": "Students",
+    "teachers": "Teachers",
+    "settings": "Settings"
+  },
+  "student": {
+    "menu": {
+      "dashboard": "Dashboard",
+      "schedule": "Schedule",
+      "classes": "Classes",
+      "assignments": "Assignments",
+      "results": "Results",
+      "tuition": "Tuition"
+    },
+    "header": {
+      "goodMorning": "Good Morning",
+      "goodAfternoon": "Good Afternoon",
+      "goodEvening": "Good Evening",
+      "subtitle": "Have a productive day of learning!"
+    },
+    "debugMode": "Show Component Boxes",
+    "dailySchedule": {
+      "title": "Today's Schedule",
+      "startTime": "Starts",
+      "onGoing": "In Progress",
+      "upcoming": "Upcoming",
+      "joinNow": "Join Class",
+      "materials": "Materials"
+    },
+    "assignments": {
+      "title": "Pending Assignments",
+      "viewAll": "View All",
+      "dueDate": "Due"
+    },
+    "tuition": {
+      "title": "Tuition Notice",
+      "important": "Important",
+      "message": "Your {package} package expires on {expiryDate}.",
+      "amountDue": "Amount Due",
+      "payNow": "Pay Now"
+    },
+    "feedback": {
+      "title": "New Feedback",
+      "viewHistory": "View History",
+      "teacher": "Ms. Hoa (Math)",
+      "timeAgo": "2 hours ago",
+      "message": "\"You did an excellent job with your homework and have great logical thinking. However, be careful with the 3D geometry section - remember to draw auxiliary diagrams.\""
+    },
+    "classes": {
+      "myClasses": "My Classes",
+      "description": "Manage your schedule, request leave, and access materials.",
+      "status": {
+        "active": "Active"
+      },
+      "progress": "Course Progress",
+      "sessions": "sessions",
+      "schedule": "Schedule",
+      "room": "Room",
+      "addNew": "Register for new class",
+      "findMore": "Find more tutoring courses",
+      "calendarComingSoon": "Calendar view is coming soon...",
+      "backToList": "Back to list",
+      "viewModes": {
+        "list": "List",
+        "calendar": "Weekly Calendar"
+      },
+      "actions": {
+        "leave": "Request Leave",
+        "makeup": "Makeup Class",
+        "makeupInfo": "Please contact your teacher to schedule a makeup class."
+      },
+      "leave": {
+        "title": "Request Leave",
+        "description": "Request leave from class",
+        "reason": "Reason for leave",
+        "reasonPlaceholder": "Please enter the reason for your leave request...",
+        "cancel": "Cancel",
+        "submit": "Submit Request",
+        "errorMessage": "Please enter a reason for your leave request",
+        "successMessage": "Leave request submitted successfully. Waiting for teacher approval.",
+        "errorSubmitting": "An error occurred while submitting the request. Please try again."
+      }
+    }
+  }
+}
