@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
       # Classes
       resources :classes do
+        # Leave Requests (nested under classes)
+        resources :leave_requests, only: [:index, :create]
         # Enrollments (nested under classes)
         resources :enrollments, only: [:index, :create, :destroy]
         
@@ -42,6 +44,11 @@ Rails.application.routes.draw do
         
         # Transactions (nested under classes)
         resources :transactions, only: [:index, :create]
+        # Student enrollment management routes
+        get :student_class , on: :collection, to: 'class_enrollment#student_classes'
+        post 'enroll', to: 'class_enrollment#enroll_class', on: :member
+        get 'subjects', to: 'classes#subjects', on: :collection
+        delete 'quit', to: 'class_enrollment#quit_class', on: :member
       end
 
       # Standalone resources
@@ -51,6 +58,12 @@ Rails.application.routes.draw do
       resources :assignment_attachments, only: [:index, :show, :create, :destroy]
       resources :submissions, only: [:show, :update]
       resources :transactions, only: [:show, :index]
+      
+      # Leave Requests
+      resources :leave_requests, only: [:show, :update, :destroy] do
+        patch :approve, on: :member
+        patch :reject, on: :member
+      end
 
       # AI Conversations
       resources :ai_conversations do

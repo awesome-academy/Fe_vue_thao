@@ -2,7 +2,7 @@
 
 class ClassService
   def create(params)
-    class_obj = Class.new(params)
+    class_obj = SchoolClass.new(params)
 
     if class_obj.save
       Result.success(class_obj)
@@ -29,6 +29,20 @@ class ClassService
     else
       Result.failure(class_obj.errors.messages)
     end
+  rescue StandardError => e
+    Result.failure({ error: e.message })
+  end
+
+  def all_classes
+    classes = SchoolClass.all
+    Result.success(classes)
+  rescue StandardError => e
+    Result.failure({ error: e.message })
+  end
+
+  def subjects_of_classes
+    subjects = SchoolClass.distinct.pluck(:subject)
+    Result.success(subjects)
   rescue StandardError => e
     Result.failure({ error: e.message })
   end

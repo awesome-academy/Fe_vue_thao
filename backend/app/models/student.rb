@@ -4,13 +4,14 @@ class Student < ApplicationRecord
   self.table_name = 'students'
 
   # Associations
-  belongs_to :user, primary_key: 'user_id'
+  belongs_to :user
   has_many :enrollments, dependent: :destroy
   has_many :classes, through: :enrollments
   has_many :attendance_records, dependent: :destroy
   has_many :submissions, dependent: :destroy
   has_many :parent_student_links, dependent: :destroy
   has_many :parents, through: :parent_student_links, source: :parent
+  has_many :leave_requests, dependent: :destroy
 
   # Validations
   validates :user_id, uniqueness: true
