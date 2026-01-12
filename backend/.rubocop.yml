@@ -1,0 +1,41 @@
+require: rubocop-rails
+
+AllCops:
+  TargetRubyVersion: 3.2
+  NewCops: enable
+  Include:
+    - 'app/**/*'
+    - 'lib/**/*'
+    - '**/*.gemspec'
+    - 'Gemfile'
+  Exclude:
+    - 'vendor/**/*'
+    - 'bin/*'
+    - 'db/**/*'
+    - 'spec/**/*'
+    - 'config/**/*'
+    - 'app/views/**/*'
+    - 'app/assets/**/*'
+
+Layout/LineLength:
+  Max: 120
+  AllowURI: true
+
+# Relax some rules
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false

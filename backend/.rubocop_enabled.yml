@@ -1,0 +1,46 @@
+# RuboCop enabled cops configuration
+# This file contains the default enabled cops
+
+AllCops:
+  TargetRubyVersion: 3.2
+
+# Layout cops
+Layout/AccessModifierIndentation:
+  Enabled: true
+
+Layout/ArgumentAlignment:
+  Enabled: true
+
+Layout/ArrayAlignment:
+  Enabled: true
+
+Layout/HashAlignment:
+  Enabled: true
+
+Layout/LineLength:
+  Max: 120
+  Enabled: true
+
+# Style cops
+Style/Alias:
+  Enabled: true
+
+Style/AndOr:
+  Enabled: true
+
+Style/ArrayJoin:
+  Enabled: true
+
+# Naming cops
+Naming/AsciiIdentifiers:
+  Enabled: true
+
+Naming/MethodName:
+  Enabled: true
+
+Naming/VariableName:
+  Enabled: true
+
+# Rails cops
+Rails/UnknownEnv:
+  Enabled: true
