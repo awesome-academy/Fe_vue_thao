@@ -24,6 +24,15 @@ class OtpService
 
     return Result.failure({ error: 'Invalid OTP' }) if user.otp_code != otp_code
 
+    if user.role == 'student' && user.student_profile.nil?
+      student_code = generate_student_code
+      Student.create!(
+        user_id: user.id,
+        full_name: user.full_name,
+        student_code: student_code,
+        wallet_balance: 0
+      )
+    end
     user.update(
       otp_verified: true,
       otp_code: nil,
@@ -58,5 +67,12 @@ class OtpService
   # Generates a random 6-digit OTP code.
   def generate_otp_code
     SecureRandom.random_bytes(3).unpack1('H*').upcase[0, 6].rjust(6, '0')
+  end
+
+  def generate_student_code
+    loop do
+      code = "ST#{Time.current.strftime('%Y%m%d')}#{rand(1000..9999)}"
+      break code unless Student.exists?(student_code: code)
+    end
   end
 end

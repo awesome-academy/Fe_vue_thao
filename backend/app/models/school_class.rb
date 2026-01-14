@@ -12,9 +12,10 @@ class SchoolClass < ApplicationRecord
   has_many :attendance_records, through: :attendance_sessions
   has_many :assignments, foreign_key: 'class_id', dependent: :destroy, inverse_of: :school_class
   has_many :transactions, foreign_key: 'class_id', dependent: :destroy,
-                          optional: true, inverse_of: :school_class
+                          inverse_of: :school_class
   has_many :ai_conversations, foreign_key: 'context_class_id',
-                              dependent: :destroy, optional: true, inverse_of: :school_class
+                              dependent: :destroy, inverse_of: :school_class
+  has_many :leave_requests, foreign_key: 'class_id', dependent: :destroy, inverse_of: :school_class
 
   # Validations
   validates :name, presence: true, length: { minimum: 3, maximum: 150 }
@@ -31,7 +32,7 @@ class SchoolClass < ApplicationRecord
   scope :by_subject, ->(subject) { where(subject:) }
   scope :taught_by, ->(teacher_id) { where(teacher_id:) }
   scope :recently_created, -> { order(created_at: :desc) }
-
+  scope :search_by_name, ->(keyword) { where('name LIKE ?', "%#{keyword}%") }
   # Methods
   def student_count
     enrollments.where(status: 'active').count

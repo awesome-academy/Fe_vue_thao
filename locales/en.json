@@ -17,6 +17,15 @@
     "delete": "Delete",
     "edit": "Edit",
     "back": "Back",
+    "pagination": {
+      "showing": "Showing",
+      "to": "to",
+      "of": "of",
+      "items": "items",
+      "previous": "Previous",
+      "next": "Next",
+      "itemsPerPage": "Items per page"
+    },
     "errors": {
       "networkError": "Network error. Please check your connection.",
       "serverError": "Server error. Please try again later."
@@ -174,15 +183,32 @@
       "message": "\"You did an excellent job with your homework and have great logical thinking. However, be careful with the 3D geometry section - remember to draw auxiliary diagrams.\""
     },
     "classes": {
+      "month": "1 month",
       "myClasses": "My Classes",
       "description": "Manage your schedule, request leave, and access materials.",
+      "registerNew": "Register for a New Class",
+      "back": "Back",
       "status": {
-        "active": "Active"
+        "active": "Active",
+        "pending": "Pending",
+        "dropped": "Dropped"
+      },
+      "registerError": {
+        "errors": {
+          "VALIDATION_ERROR": "You already enrolled in this class",
+          "UNAUTHORIZED": "You do not have permission to perform this action.",
+          "FORBIDDEN": "Action forbidden. Please contact administrator.",
+          "NOT_FOUND": "Resource not found.",
+          "BAD_REQUEST": "Invalid request. Please try again.",
+          "INTERNAL_ERROR": "Server error. Please try again later.",
+          "ERROR": "An error occurred. Please try again."
+        }
       },
       "progress": "Course Progress",
       "sessions": "sessions",
       "schedule": "Schedule",
       "room": "Room",
+      "tuition": "Tuition",
       "addNew": "Register for new class",
       "findMore": "Find more tutoring courses",
       "calendarComingSoon": "Calendar view is coming soon...",
@@ -191,7 +217,24 @@
         "list": "List",
         "calendar": "Weekly Calendar"
       },
+      "searchPlaceholder": "Search by subject, teacher...",
+      "filterAll": "All",
+      "filterMath": "Math",
+      "filterEnglish": "English",
+      "filterExam": "Exam Prep",
+      "availableSlots": "Only {slots} slots",
+      "enrolledStudents": "{count} enrolled",
+      "register": "Register",
+      "confirmRegister": "Are you sure you want to register for the class \"{className}\"?",
+      "registerSuccess": "Successfully registered! The class has been added to your list.",
+      "submittingLeave": "Submitting leave request...",
+      "confirmCancelLeave": "Are you sure you want to cancel the leave request for \"{className}\"?",
+      "confirmCancelEnroll": "Are you sure you want to cancel the enrollment for \"{className}\"?",
+      "leaving": "Cancelling enrollment...",
+      "noCoursesFound": "No courses found.",
       "actions": {
+        "cancel": "Cancel",
+        "join": "Join Class",
         "leave": "Request Leave",
         "makeup": "Makeup Class",
         "makeupInfo": "Please contact your teacher to schedule a makeup class."
@@ -199,14 +242,31 @@
       "leave": {
         "title": "Request Leave",
         "description": "Request leave from class",
+        "date": "Date",
+        "selectDate": "Select date",
+        "leaveType": "Leave Type",
+        "temporary": "Temporary Leave",
+        "permanent": "Permanent Leave",
         "reason": "Reason for leave",
         "reasonPlaceholder": "Please enter the reason for your leave request...",
         "cancel": "Cancel",
         "submit": "Submit Request",
+        "confirmCancelEnroll": "Are you sure you want to cancel the enrollment for \"{className}\"?",
+        "cancelSuccess": "Leave request cancelled successfully.",
+        "cancelError": {
+          "errors": {
+            "ERROR": "An error occurred while cancelling the leave request. Please try again."
+          }
+        },
         "errorMessage": "Please enter a reason for your leave request",
         "successMessage": "Leave request submitted successfully. Waiting for teacher approval.",
-        "errorSubmitting": "An error occurred while submitting the request. Please try again."
-      }
+        "errorSubmitting": {
+          "errors": {
+            "ERROR": "An error occurred while submitting the request. Please try again."
+          }
+        }
+      },
+      "errorTitle": "Error Loading Classes"
     }
   }
 }

@@ -11,10 +11,10 @@ class ClassSerializer
       name: @class.name,
       subject: @class.subject,
       grade_level: @class.grade_level,
-      tuition_fee_per_session: @class.tuition_fee_per_session,
+      fee_per_session: @class.fee_per_session,
       teacher: teacher_info,
       schedule: @class.schedule,
-      student_count: @class.students.count,
+      student_count: @class.enrollments.active.count,
       created_at: @class.created_at,
       updated_at: @class.updated_at
     }
@@ -24,13 +24,19 @@ class ClassSerializer
     new(class_obj).serialize
   end
 
+  def self.serialize_collection(classes)
+    classes.map { |class_obj| new(class_obj).serialize }
+  end
+
   private
 
   def teacher_info
+    return nil if @class.teacher.nil?
+
     {
       id: @class.teacher.id,
-      full_name: @class.teacher.full_name,
-      email: @class.teacher.email
+      full_name: @class.teacher.user&.full_name,
+      email: @class.teacher.user&.email
     }
   end
 end

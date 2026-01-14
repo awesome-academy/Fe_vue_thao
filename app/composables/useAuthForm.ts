@@ -31,7 +31,6 @@ export const useAuthForm = () => {
       role: 'student',
     });
   };
-
   return {
     isLogin,
     showPassword,

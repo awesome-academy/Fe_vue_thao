@@ -11,9 +11,9 @@
 import { onMounted } from 'vue';
 
 onMounted(() => {
-  const authToken = localStorage.getItem('authToken');
+  const authToken = useCookie('auth_token').value;
   if (authToken) {
-    navigateTo('/dashboard');
+    navigateTo('/student');
   } else {
     navigateTo('/auth');
   }

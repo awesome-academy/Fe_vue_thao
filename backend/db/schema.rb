@@ -10,7 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2026_01_07_030250) do
+ActiveRecord::Schema[7.0].define(version: 2026_01_13_154134) do
+  create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.string "service_name", null: false
+    t.bigint "byte_size", null: false
+    t.string "checksum"
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
   create_table "ai_conversations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "teacher_id", null: false
     t.bigint "context_class_id"
@@ -106,6 +134,25 @@ ActiveRecord::Schema[7.0].define(version: 2026_01_07_030250) do
     t.index ["student_id"], name: "index_enrollments_on_student_id"
   end
 
+  create_table "leave_requests", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "student_id", null: false
+    t.date "date", null: false
+    t.string "reason"
+    t.string "status", default: "pending", null: false
+    t.text "teacher_note"
+    t.datetime "approved_at"
+    t.string "approved_by"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "leave_type", default: "temporary", null: false
+    t.bigint "class_id"
+    t.index ["class_id"], name: "index_leave_requests_on_class_id"
+    t.index ["leave_type"], name: "index_leave_requests_on_leave_type"
+    t.index ["status"], name: "index_leave_requests_on_status"
+    t.index ["student_id", "date"], name: "index_leave_requests_on_student_and_date_unique", unique: true
+    t.index ["student_id"], name: "index_leave_requests_on_student_id"
+  end
+
   create_table "packages", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", limit: 100, null: false
     t.decimal "price", precision: 15, scale: 2, null: false
@@ -136,9 +183,10 @@ ActiveRecord::Schema[7.0].define(version: 2026_01_07_030250) do
     t.text "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "user_id"
+    t.bigint "user_id"
     t.string "student_code"
     t.decimal "wallet_balance", precision: 15, scale: 2, default: "0.0"
+    t.string "address"
     t.index ["student_code"], name: "index_students_on_student_code", unique: true
     t.index ["user_id"], name: "index_students_on_user_id", unique: true
   end
@@ -154,7 +202,8 @@ ActiveRecord::Schema[7.0].define(version: 2026_01_07_030250) do
     t.text "teacher_feedback"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["assignment_id", "student_id"], name: "index_submissions_on_assignment_id_and_student_id", unique: true
+    t.string "file_name"
+    t.index ["assignment_id", "student_id"], name: "index_submissions_on_assignment_id_and_student_id"
     t.index ["assignment_id"], name: "index_submissions_on_assignment_id"
     t.index ["status"], name: "index_submissions_on_status"
     t.index ["student_id"], name: "index_submissions_on_student_id"
@@ -181,11 +230,31 @@ ActiveRecord::Schema[7.0].define(version: 2026_01_07_030250) do
     t.string "type"
     t.string "method"
     t.string "description"
+    t.bigint "tuition_invoice_id"
     t.index ["class_id"], name: "index_transactions_on_class_id"
     t.index ["created_at"], name: "index_transactions_on_created_at"
     t.index ["payment_date"], name: "index_transactions_on_payment_date"
+    t.index ["tuition_invoice_id", "status"], name: "index_transactions_on_tuition_invoice_id_and_status"
+    t.index ["tuition_invoice_id"], name: "index_transactions_on_tuition_invoice_id"
     t.index ["user_id", "class_id"], name: "index_transactions_on_user_id_and_class_id"
     t.index ["user_id"], name: "index_transactions_on_user_id"
+  end
+
+  create_table "tuition_invoices", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "student_id", null: false
+    t.string "title", null: false
+    t.text "description"
+    t.decimal "amount", precision: 15, scale: 2, null: false
+    t.string "status", default: "pending"
+    t.date "due_date", null: false
+    t.datetime "paid_date"
+    t.string "invoice_code", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["due_date"], name: "index_tuition_invoices_on_due_date"
+    t.index ["invoice_code"], name: "index_tuition_invoices_on_invoice_code", unique: true
+    t.index ["student_id", "status"], name: "index_tuition_invoices_on_student_id_and_status"
+    t.index ["student_id"], name: "index_tuition_invoices_on_student_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -211,6 +280,8 @@ ActiveRecord::Schema[7.0].define(version: 2026_01_07_030250) do
     t.index ["user_id"], name: "index_users_on_user_id", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "ai_conversations", "classes", column: "context_class_id"
   add_foreign_key "ai_conversations", "teachers", primary_key: "user_id"
   add_foreign_key "ai_messages", "ai_conversations"
@@ -222,13 +293,17 @@ ActiveRecord::Schema[7.0].define(version: 2026_01_07_030250) do
   add_foreign_key "classes", "users", column: "teacher_id"
   add_foreign_key "enrollments", "classes"
   add_foreign_key "enrollments", "students"
+  add_foreign_key "leave_requests", "classes"
+  add_foreign_key "leave_requests", "students"
   add_foreign_key "parent_student_links", "users", column: "parent_id", primary_key: "user_id"
   add_foreign_key "parent_student_links", "users", column: "student_id", primary_key: "user_id"
-  add_foreign_key "students", "users", primary_key: "user_id"
+  add_foreign_key "students", "users"
   add_foreign_key "submissions", "assignments"
   add_foreign_key "submissions", "students"
   add_foreign_key "teachers", "packages"
   add_foreign_key "teachers", "users", primary_key: "user_id"
   add_foreign_key "transactions", "classes"
+  add_foreign_key "transactions", "tuition_invoices"
   add_foreign_key "transactions", "users"
+  add_foreign_key "tuition_invoices", "students"
 end

@@ -17,7 +17,7 @@ export const handleAuthError = (e: unknown, title: string) => {
   }
 };
 
-export const getAuthHeader = () => {
+export const getAuthHeader = (): Record<string, string> => {
   const token = useCookie('auth_token').value;
   if (!token) return {};
 

@@ -111,6 +111,14 @@ const authStore = useAuthStore();
 const { form, isLogin, toggleMode, resetForm, showPassword } = useAuthForm();
 
 const handleAuthSubmit = async () => {
+  if (form.email === '' || form.password === '') {
+    toast.error(t('auth.messages.fillAllFields'));
+    return;
+  }
+  if (!isLogin.value && form.full_name === '') {
+    toast.error(t('auth.messages.fillAllFields'));
+    return;
+  }
   startLoading(
     isLogin.value ? t('auth.messages.loggingIn') : t('auth.messages.signingUp')
   );

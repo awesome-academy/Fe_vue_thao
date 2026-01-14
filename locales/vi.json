@@ -17,6 +17,15 @@
     "delete": "Xóa",
     "edit": "Chỉnh sửa",
     "back": "Quay lại",
+    "pagination": {
+      "showing": "Hiển thị",
+      "to": "đến",
+      "of": "trên tổng cộng",
+      "items": "mục",
+      "previous": "Trước",
+      "next": "Tiếp",
+      "itemsPerPage": "Mục trên mỗi trang"
+    },
     "errors": {
       "networkError": "Lỗi mạng. Vui lòng kiểm tra kết nối của bạn.",
       "serverError": "Lỗi máy chủ. Vui lòng thử lại sau."
@@ -144,6 +153,7 @@
       "results": "Kết quả học tập",
       "tuition": "Học phí"
     },
+
     "header": {
       "goodMorning": "Xin chào",
       "goodAfternoon": "Xin chào",
@@ -179,15 +189,32 @@
       "message": "\"Minh làm bài tập về nhà rất tốt, tư duy logic. Tuy nhiên cần cẩn thận phần hình học không gian nhé, em hay quên vẽ hình phụ.\""
     },
     "classes": {
+      "month": "1 tháng",
       "myClasses": "Lớp học của tôi",
       "description": "Quản lý lịch học, xin nghỉ phép và tài liệu.",
+      "registerNew": "Đăng ký lớp học mới",
+      "back": "Quay lại",
       "status": {
-        "active": "Đang học"
+        "active": "Đang học",
+        "pending": "Chờ duyệt",
+        "dropped": "Đã rời"
+      },
+      "registerError": {
+        "errors": {
+          "VALIDATION_ERROR": "Bạn đã đăng ký lớp này rồi",
+          "UNAUTHORIZED": "Bạn không có quyền thực hiện hành động này.",
+          "FORBIDDEN": "Hành động bị cấm. Vui lòng liên hệ quản trị viên.",
+          "NOT_FOUND": "Không tìm thấy tài nguyên.",
+          "BAD_REQUEST": "Yêu cầu không hợp lệ. Vui lòng thử lại.",
+          "INTERNAL_ERROR": "Lỗi máy chủ. Vui lòng thử lại sau.",
+          "ERROR": "Đã xảy ra lỗi. Vui lòng thử lại."
+        }
       },
       "progress": "Tiến độ khóa học",
       "sessions": "buổi",
       "schedule": "Lịch học",
       "room": "Phòng",
+      "tuition": "Học phí",
       "addNew": "Đăng ký lớp mới",
       "findMore": "Tìm kiếm các khóa học bổ trợ khác",
       "calendarComingSoon": "Giao diện Lịch chi tiết đang được phát triển...",
@@ -196,22 +223,56 @@
         "list": "Danh sách",
         "calendar": "Lịch tuần"
       },
+      "searchPlaceholder": "Tìm kiếm theo môn học, giáo viên...",
+      "filterAll": "Tất cả",
+      "filterMath": "Toán",
+      "filterEnglish": "Tiếng Anh",
+      "filterExam": "Luyện Thi",
+      "availableSlots": "Còn {slots} chỗ",
+      "enrolledStudents": "{count} học sinh",
+      "register": "Đăng ký",
+      "confirmRegister": "Bạn có chắc chắn muốn đăng ký lớp \"{className}\" không?",
+      "registerSuccess": "Đăng ký thành công! Lớp học đã được thêm vào danh sách.",
+      "submittingLeave": "Đang gửi đơn xin nghỉ...",
+      "confirmCancelLeave": "Bạn có chắc chắn muốn hủy đơn xin nghỉ cho lớp \"{className}\" không?",
+      "confirmCancelEnroll": "Bạn có chắc chắn muốn hủy đăng ký lớp \"{className}\" không?",
+      "leaving": "Đang hủy đăng ký...",
+      "noCoursesFound": "Không tìm thấy lớp học phù hợp.",
       "actions": {
-        "leave": "Xin nghỉ",
+        "cancel": "Hủy",
+        "join": "Vào lớp",
+        "leave": "Xin nghỉ phép",
         "makeup": "Học bù",
         "makeupInfo": "Vui lòng liên hệ giáo viên để xếp lịch học bù."
       },
       "leave": {
         "title": "Xin nghỉ phép",
         "description": "Xin nghỉ phép từ lớp",
+        "date": "Ngày xin nghỉ",
+        "selectDate": "Chọn ngày",
+        "leaveType": "Loại xin nghỉ",
+        "temporary": "Xin nghỉ tạm thời",
+        "permanent": "Xin nghỉ vĩnh viễn",
         "reason": "Lý do xin nghỉ",
         "reasonPlaceholder": "Vui lòng nhập lý do xin nghỉ...",
         "cancel": "Hủy",
         "submit": "Gửi đơn",
+        "confirmCancelEnroll": "Bạn có chắc chắn muốn hủy đăng ký lớp \"{className}\" không?",
+        "cancelSuccess": "Hủy đơn đăng ký lớp học thành công.",
+        "cancelError": {
+          "errors": {
+            "ERROR": "Có lỗi xảy ra khi hủy đơn xin nghỉ. Vui lòng thử lại."
+          }
+        },
         "errorMessage": "Vui lòng nhập lý do xin nghỉ",
         "successMessage": "Gửi đơn xin nghỉ thành công. Chờ duyệt từ giáo viên.",
-        "errorSubmitting": "Có lỗi xảy ra khi gửi đơn. Vui lòng thử lại."
-      }
+        "errorSubmitting": {
+          "errors": {
+            "ERROR": "Có lỗi xảy ra khi gửi đơn. Vui lòng thử lại."
+          }
+        }
+      },
+      "errorTitle": "Lỗi tải danh sách lớp học"
     }
   }
 }
